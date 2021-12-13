@@ -1,6 +1,8 @@
 package main
 
 import (
+	swagger "github.com/arsmn/fiber-swagger/v2"
+	_ "github.com/berkayalcin/go-web-service-demo/docs"
 	"github.com/gofiber/fiber/v2"
 	"go-web-service-demo/database"
 	"go-web-service-demo/internal/handler/user"
@@ -8,10 +10,26 @@ import (
 	"log"
 )
 
+// @title Fiber Swagger Example API
+// @version 2.0
+// @description This is a sample server server.
+// @termsOfService http://swagger.io/terms/
+
+// @contact.name API Support
+// @contact.url http://www.swagger.io/support
+// @contact.email support@swagger.io
+
+// @license.name Apache 2.0
+// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
+
+// @host localhost:3000
+// @BasePath /
+// @schemes http
 func main() {
 	app := fiber.New()
 	api := app.Group("v1", middleware.Logging)
 	users := api.Group("users")
+	app.Get("/swagger/*", swagger.Handler)
 	users.Get("/", userHandler.GetAll)
 	users.Get("/:id", userHandler.Get)
 	users.Post("/", userHandler.Create)
