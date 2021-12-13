@@ -27,9 +27,9 @@ import (
 // @schemes http
 func main() {
 	app := fiber.New()
+	app.Get("/swagger/*", swagger.Handler)
 	api := app.Group("v1", middleware.Logging)
 	users := api.Group("users")
-	app.Get("/swagger/*", swagger.Handler)
 	users.Get("/", userHandler.GetAll)
 	users.Get("/:id", userHandler.Get)
 	users.Post("/", userHandler.Create)
