@@ -2,9 +2,9 @@ package main
 
 import (
 	swagger "github.com/arsmn/fiber-swagger/v2"
-	_ "github.com/berkayalcin/go-web-service-demo/docs"
 	"github.com/gofiber/fiber/v2"
 	"go-web-service-demo/database"
+	_ "go-web-service-demo/docs"
 	"go-web-service-demo/internal/handler/user"
 	"go-web-service-demo/internal/middleware"
 	"log"

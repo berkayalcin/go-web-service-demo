@@ -7,6 +7,14 @@ import (
 	"time"
 )
 
+// GetAll ShowAccount godoc
+// @Summary      get all
+// @Description  get all
+// @Tags         users
+// @Accept       json
+// @Produce      json
+// @Success      200  {object}  model.UserDto
+// @Router       /v1/users [get]
 func GetAll(c *fiber.Ctx) error {
 	db := database.DB
 	var users []model.User

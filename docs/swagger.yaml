@@ -1,4 +1,16 @@
 basePath: /
+definitions:
+  model.UserDto:
+    properties:
+      email:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      surname:
+        type: string
+    type: object
 host: localhost:3000
 info:
   contact:
@@ -12,7 +24,22 @@ info:
   termsOfService: http://swagger.io/terms/
   title: Fiber Swagger Example API
   version: "2.0"
-paths: {}
+paths:
+  /v1/users:
+    get:
+      consumes:
+      - application/json
+      description: get all
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.UserDto'
+      summary: get all
+      tags:
+      - users
 schemes:
 - http
 swagger: "2.0"
